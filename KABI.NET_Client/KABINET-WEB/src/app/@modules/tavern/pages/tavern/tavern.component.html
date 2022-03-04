@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="logo">
+    <img src="../../../../../assets/tavern/tavern-logo.svg" alt="Tavern status logo">
+  </div>
+  <div id="created-appointments">
+    <h4 class="title">{{ 'TavernPage.Title' | translate }}</h4>
+    <mat-card class="appointment-card" *ngFor="let appointment of allAppointments; trackBy:trackByAppointmentId">
+      <mat-card-header>
+        <mat-card-title>{{appointment.title}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="left-section">
+          <div class="start-date">{{appointment.startTime | date:'dd.MM.yyyy HH:mm'}}</div>
+          <div class="end-date">{{appointment.endTime | date:'dd.MM.yyyy HH:mm'}}</div>
+        </div>
+        <div class="right-section">
+          <div class="created-by">{{ 'TavernPage.CreatedBy' | translate }}</div>
+          <div class="user-names">{{appointment.user.firstName}} {{appointment.user.lastName}}</div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

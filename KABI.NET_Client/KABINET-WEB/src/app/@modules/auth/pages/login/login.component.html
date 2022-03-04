@@ -1,0 +1,41 @@
+<div class="container">
+  <img class="logo" src="../../../../assets/logo/main-logo.png" alt="Kabi.Net">
+  <h5 class="title">{{'LoginPage.Title' | translate}}</h5>
+  <form [formGroup]="loginForm" id="loginForm" (ngSubmit)="login()">
+    <mat-form-field>
+      <input matInput type="text" placeholder="{{'LoginPage.EmailPlaceholder' | translate}}"
+        formControlName="EmailAddress">
+      <mat-error *ngIf="loginForm.get('EmailAddress').hasError('required')">
+        {{'LoginPage.EmailErrorRequired' | translate}}</mat-error>
+      <mat-error *ngIf="loginForm.get('EmailAddress').hasError('email')">{{'LoginPage.EmailErrorType' | translate}}
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="password" placeholder="{{'LoginPage.PasswordPlaceholder' | translate}}"
+        formControlName="Password">
+      <mat-error *ngIf="loginForm.get('Password').hasError('required')">
+        {{'LoginPage.PasswordErrorRequired' | translate}}</mat-error>
+    </mat-form-field>
+    <div class="actions">
+      <button mat-raised-button color="primary" type="submit"
+        [disabled]="!loginForm.valid">{{'LoginPage.LoginBtn' | translate}}</button>
+    </div>
+  </form>
+  <a mat-button id="forgot-password-btn"
+    (click)="forgotPassword(forgotPasswordDialog)">{{'LoginPage.ForgotPasswordBtn' | translate}}</a>
+</div>
+
+<!-- Dialogs -->
+<ng-template #forgotPasswordDialog>
+  <div id="forgotPasswordDialog">
+    <h1 mat-dialog-title>{{ 'LoginPage.ForgotPasswordDialog.Title' | translate }}</h1>
+    <div mat-dialog-content>
+      <p>{{ 'LoginPage.ForgotPasswordDialog.Content' | translate }}</p>
+    </div>
+    <div mat-dialog-actions>
+      <div class="actions">
+        <button mat-raised-button color="primary" [mat-dialog-close]="" cdkFocusInitial>OK</button>
+      </div>
+    </div>
+  </div>
+</ng-template>

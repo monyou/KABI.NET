@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "KABINET-WEB",
+      "public": "dist/KABINET-WEB",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

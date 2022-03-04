@@ -1,0 +1,111 @@
+%dialogCommon {
+  form {
+
+    mat-form-field {
+      width: 100%;
+    }
+  }
+
+  .actions {
+    margin-left: auto;
+  }
+}
+
+.container {
+  max-width: 350px;
+  margin: 0 auto;
+
+  #laundry-status {
+    text-align: center;
+
+    .title {
+      margin-top: 0;
+    }
+
+    #timer {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px;
+
+      .mat-card {
+        padding: 5px;
+        width: 200px;
+      }
+
+      #laundry-timer-info {
+        position: relative;
+        top: -20px;
+        word-spacing: 28px;
+        left: 1px;
+      }
+
+      #laundry-timer {
+        font-size: 2em;
+        font-family: 'Courier New', Courier, monospace;
+      }
+    }
+
+    #stop-laundry-btn {
+      margin-top: 10px;
+      background-color: red;
+      width: 100px;
+      color: white;
+    }
+  }
+
+  #users {
+
+    .title {
+      margin-bottom: 0;
+    }
+
+    #table-header {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      align-items: center;
+
+      #search-in-users {
+        width: 200px;
+      }
+    }
+
+    #users-table {
+      width: 100%;
+      background: transparent;
+
+      td,
+      th {
+        padding: 5px;
+      }
+    }
+
+    #users-table-paginator {
+      background: transparent;
+    }
+  }
+}
+
+.action-btn {
+  display: block;
+  width: 100%;
+  text-align: left;
+}
+
+#confirmUserDeletingDialog {
+  @extend %dialogCommon;
+}
+
+#editUserDialog {
+  @extend %dialogCommon;
+}
+
+#payDialog {
+  @extend %dialogCommon;
+}
+
+#addUserDialog {
+  @extend %dialogCommon;
+}

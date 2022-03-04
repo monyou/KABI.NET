@@ -1,0 +1,157 @@
+{
+  "Common": {
+    "Hours": "h",
+    "Year": "y",
+    "Minutes": "m",
+    "Seconds": "s",
+    "And": "and",
+    "CurrencyLv": "lv",
+    "Yes": "Yes",
+    "No": "No"
+  },
+  "Navbar": {
+    "MatListMenuItems": {
+      "LaundryStatus": "Laundry status",
+      "TavernAppointmentStatus": "Tavern status",
+      "LaundryReport": "Laundry report",
+      "TavernAppointmentReport": "Tavern report",
+      "AdminDashboard": "Dashboard",
+      "Settings": {
+        "Title": "Settings",
+        "ChangePassword": "Change password"
+      },
+      "LogOut": "Log out"
+    },
+    "SnackbarSendFullReportSuccessfulMsg": "Full report was sent to the Manager successfully.",
+    "SnackbarSendFullReportErrorMsg": "Full report CAN'T be sent right now!"
+  },
+  "Footer": {
+    "Content": "All rights reserved"
+  },
+  "MatTablePaginator": {
+    "Of": "of",
+    "FirstPageLabel": "First page",
+    "LastPageLabel": "Last page",
+    "ItemsPerPageLabel": "Results",
+    "NextPageLabel": "Next page",
+    "PreviousPageLabel": "Previous page"
+  },
+  "AdminDashboardPage": {
+    "LaundryTitle": "The laundry is in use",
+    "UsersTitle": "Users",
+    "AddUserBtn": "Add",
+    "FilterUsersTablePlaceholder": "Filter",
+    "StopLaundryAction": "STOP",
+    "AddUserDialog": {
+      "Title": "Add user",
+      "EmailPlaceholder": "Email",
+      "EmailErrorRequired": "You need to enter an email address!",
+      "EmailErrorType": "Invalid email!",
+      "FirstNamePlaceholder": "First name",
+      "FirstNameErrorRequired": "You need to enter a first name!",
+      "LastNamePlaceholder": "Last name",
+      "LastNameErrorRequired": "You need to enter a last name!",
+      "RoomPlaceholder": "Room",
+      "RoomErrorRequired": "You need to enter a room!",
+      "RoomErrorPattern": "Invalid room number!",
+      "CancelAction": "Cancel"
+    },
+    "EditUserDialog": {
+      "Title": "Edit user",
+      "PasswordPlaceholder": "New password",
+      "PasswordErrorRequired": "You need to enter a new password!",
+      "CancelAction": "Cancel"
+    },
+    "UserDeleteDialog": {
+      "Title": "Delete user",
+      "Content": "Are you sure you want to delete the user?",
+      "CancelAction": "Cancel"
+    },
+    "PayDialog": {
+      "Title": "Laundry payment",
+      "Room": "Room",
+      "LaundryTime": "Laundry time",
+      "ToPay": "To pay",
+      "DelayAction": "Delay",
+      "PayAction": "Pay"
+    },
+    "UsersTable": {
+      "FirstNameCol": "First Name",
+      "LastNameCol": "Last Name",
+      "RoomCol": "Room",
+      "ActionsCol": "Actions",
+      "StartLaundryAction": "Laundry",
+      "TavernSchedulerAction": "Tavern",
+      "WarnUserAction": "Warn user",
+      "Block": "Block user",
+      "EditAction": "Edit",
+      "DeleteAction": "Delete"
+    },
+    "SnackbarPayLaundrySuccessfulMsg": "Successful payment for the laundry.",
+    "SnackbarPayLaundryErrorMsg": "The payment CAN'T be made!",
+    "SnackbarPayLaundryInfoMsg": "The user have to pay to the manager!",
+    "SnackbarEditSuccessfulMsg": "The user has been edited successfully.",
+    "SnackbarEditErrorMsg": "The user CANT'T be edited!",
+    "SnackbarAddSuccessfulMsg": "The user has been registered successfully.",
+    "SnackbarAddErrorMsg": "The user CANT'T be registered!",
+    "SnackbarDeleteSuccessfulMsg": "The user has been deleted successfully.",
+    "SnackbarDeleteErrorMsg": "The user CAN'T be deleted!",
+    "WarnUserForBlackListSuccessfulMsg": "The user was warned successfully. Warnings left {{warnings}}.",
+    "WarnUserForBlackListSuccessfulMsg2": "The user was blocked successfully.",
+    "WarnUserForBlackListErrorMsg": "Warning/Blocking CAN'T be made!"
+  },
+  "LoginPage": {
+    "Title": "Log In",
+    "EmailPlaceholder": "Email",
+    "EmailErrorRequired": "You need to enter your email address!",
+    "EmailErrorType": "Invalid email address!",
+    "PasswordPlaceholder": "Password",
+    "PasswordErrorRequired": "You need to enter your password!",
+    "LoginBtn": "Log in",
+    "ForgotPasswordBtn": "You forgot your password?",
+    "SnackbarSuccessfulMsg": "Logged in successfully!",
+    "SnackbarErrorMsg": "Wrong email address or password! Try again...",
+    "ForgotPasswordDialog": {
+      "Title": "Forgotten password",
+      "Content": "In order to change you password, please find the Manager!"
+    }
+  },
+  "LaundryPage": {
+    "LaundryFree": "The laundry is free",
+    "LaundryBusy": "The laundry is in use"
+  },
+  "TavernPage": {
+    "Title": "Upcoming events",
+    "CreatedBy": "Sponsor"
+  },
+  "AccessDeniedPage": {
+    "Header": "ACCESS DENIED",
+    "Content": "You are trying to access page that you don't have rights!",
+    "Action": "Go back"
+  },
+  "ChangePasswordPage": {
+    "Title": "Change Password",
+    "CurrentPassPlaceholder": "Type your current password",
+    "CurrentPassErrorRequired": "Please type your current password!",
+    "NewPassPlaceholder": "Type your new password",
+    "NewPassErrorRequired": "Please type a password!",
+    "ConfirmPassPlaceholder": "Confirm your new password",
+    "PasswordsErrorMustMatch": "Password doesn't match!",
+    "ChangeBtn": "Change",
+    "SnackbarSuccessfulMsg": "You have successfully changed your password!",
+    "SnackbarErrorMsg": "Incorrect current password! Try again..."
+  },
+  "TavernSchedulerPage": {
+    "CreateAppointmentButton": "Create Event",
+    "Title": "Upcoming events",
+    "CreatedBy": "Sponsor",
+    "EnterAppointmentTitleDialog": {
+      "Title": "Name your event",
+      "TitlePlaceholder": "Event name",
+      "TitleErrorRequired": "Name is required",
+      "CancelAction": "Cancel"
+    },
+    "SnackbarAddAppointmentSuccessfulMsg": "The event was created successfully.",
+    "SnackbarAddAppointmentErrorMsg": "The event CAN'T be created!"
+  }
+}

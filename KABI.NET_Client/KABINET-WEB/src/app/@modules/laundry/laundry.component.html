@@ -1,0 +1,19 @@
+<div class="container">
+  <div id="laundry-busy" *ngIf="laundryStatus; else laundryIsFree">
+    <h4 class="title">{{ 'LaundryPage.LaundryBusy' | translate }}</h4>
+    <div>
+      <p id="laundry-timer">{{ laundryTimerText }}</p>
+      <p id="laundry-timer-info">({{ 'Common.Hours' | translate }})
+        ({{ 'Common.Minutes' | translate }})
+        ({{ 'Common.Seconds' | translate }})</p>
+    </div>
+    <img id="laundry-busy-icon" src="../../../assets/laundry/washing-machine-busy.gif" alt="Busy Laundry Logo">
+  </div>
+  <ng-template #laundryIsFree>
+    <div id="laundry-free">
+      <h4 class="title">{{ 'LaundryPage.LaundryFree' | translate }}</h4>
+      <br>
+      <img id="laundry-free-icon" src="../../../assets/laundry/washing-machine-free.gif" alt="Free Laundry Logo">
+    </div>
+  </ng-template>
+</div>

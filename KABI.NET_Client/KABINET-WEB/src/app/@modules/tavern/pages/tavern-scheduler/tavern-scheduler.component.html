@@ -1,0 +1,56 @@
+<div class="container">
+  <input id="picked-event-datetime" [min]="now" [owlDateTime]="calendarScheduler" [selectMode]="'range'"
+    (dateTimeChange)="createTavernAppointment($event, enterAppointmentTitleDialog)" hidden>
+  <owl-date-time #calendarScheduler [firstDayOfWeek]="1" [hideOtherMonths]="true" [panelClass]="'my-calendar-scheduler'"
+    (afterPickerOpen)="initCalendarScheduler()">
+  </owl-date-time>
+
+  <button mat-stroked-button id="calendar-scheduler-trigger" [owlDateTimeTrigger]="calendarScheduler">
+    <i class="fa fa-calendar"></i>
+    <span>{{ 'TavernSchedulerPage.CreateAppointmentButton' | translate }}</span>
+  </button>
+  <div id="created-appointments">
+    <h4 class="title">{{ 'TavernSchedulerPage.Title' | translate }}</h4>
+    <mat-card class="appointment-card" *ngFor="let appointment of allAppointments; trackBy:trackByAppointmentId">
+      <mat-card-header>
+        <mat-card-title>{{appointment.title}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="left-section">
+          <div class="start-date">{{appointment.startTime | date:'dd.MM.yyyy HH:mm'}}</div>
+          <div class="end-date">{{appointment.endTime | date:'dd.MM.yyyy HH:mm'}}</div>
+        </div>
+        <div class="right-section">
+          <div class="created-by">{{ 'TavernSchedulerPage.CreatedBy' | translate }}</div>
+          <div class="user-names">{{appointment.user.firstName}} {{appointment.user.lastName}}</div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<!-- Dialogs -->
+<ng-template #enterAppointmentTitleDialog>
+  <div id="enterAppointmentTitleDialog">
+    <form [formGroup]="enterAppointmentTitleForm">
+      <h1 mat-dialog-title>{{ 'TavernSchedulerPage.EnterAppointmentTitleDialog.Title' | translate }}</h1>
+      <div mat-dialog-content>
+        <mat-form-field>
+          <input type="text" matInput
+            placeholder="{{'TavernSchedulerPage.EnterAppointmentTitleDialog.TitlePlaceholder' | translate}}"
+            formControlName="Title" required>
+          <mat-error *ngIf="enterAppointmentTitleForm.get('Title').hasError('required')">
+            {{'TavernSchedulerPage.EnterAppointmentTitleDialog.TitleErrorRequired' | translate}}</mat-error>
+        </mat-form-field>
+      </div>
+      <div mat-dialog-actions>
+        <div class="actions">
+          <button mat-button
+            [mat-dialog-close]="(false)">{{ 'TavernSchedulerPage.EnterAppointmentTitleDialog.CancelAction' | translate }}</button>
+          <button mat-raised-button color="primary" [mat-dialog-close]="(true)"
+            [disabled]="enterAppointmentTitleForm.invalid">OK</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>

@@ -1,0 +1,23 @@
+.container {
+  text-align: center;
+
+  #loginForm {
+    max-width: 300px;
+    margin: auto;
+
+    mat-form-field {
+      width: 100%;
+    }
+  }
+
+  #forgot-password-btn {
+    margin-top: 10px;
+  }
+}
+
+#forgotPasswordDialog {
+
+  .actions {
+    margin-left: auto;
+  }
+}

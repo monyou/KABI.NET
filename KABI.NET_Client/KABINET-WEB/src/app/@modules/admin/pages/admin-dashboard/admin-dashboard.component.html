@@ -1,0 +1,215 @@
+<div class="container">
+  <div *ngIf="laundryStatus" id="laundry-status">
+    <h5 class="title">{{ 'AdminDashboardPage.LaundryTitle' | translate }}</h5>
+    <div id="timer">
+      <mat-card>
+        <mat-card-content>
+          <p id="laundry-timer">{{ laundryTimerText }}</p>
+          <p id="laundry-timer-info">({{ 'Common.Hours' | translate }})
+            ({{ 'Common.Minutes' | translate }})
+            ({{ 'Common.Seconds' | translate }})</p>
+        </mat-card-content>
+      </mat-card>
+      <button id="stop-laundry-btn" mat-raised-button (click)="stopLaundry(payDialog)">
+        {{ 'AdminDashboardPage.StopLaundryAction' | translate }}
+      </button>
+    </div>
+  </div>
+  <div id="users">
+    <h3 class="title">{{ 'AdminDashboardPage.UsersTitle' | translate }}</h3>
+    <div id="table-header">
+      <mat-form-field id="search-in-users">
+        <input matInput (keyup)="applyFilterToUsersTable($event.target.value)"
+          placeholder="{{ 'AdminDashboardPage.FilterUsersTablePlaceholder' | translate }}">
+      </mat-form-field>
+      <button mat-raised-button color="primary" id="add-user-btn" (click)="addUser(addUserDialog)">
+        <mat-icon>person_add</mat-icon> {{ 'AdminDashboardPage.AddUserBtn' | translate }}
+      </button>
+    </div>
+
+    <div class="table-responsive">
+      <table id="users-table" mat-table [dataSource]="userTableDataSource" matSort>
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="Id">
+          <th hidden mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+          <td hidden mat-cell *matCellDef="let row"> {{row.id}} </td>
+        </ng-container>
+
+        <!-- FirstName Column -->
+        <ng-container matColumnDef="FirstName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            {{ 'AdminDashboardPage.UsersTable.FirstNameCol' | translate }} </th>
+          <td mat-cell *matCellDef="let row"> {{row.firstName}} </td>
+        </ng-container>
+
+        <!-- LastName Column -->
+        <ng-container matColumnDef="LastName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            {{ 'AdminDashboardPage.UsersTable.LastNameCol' | translate }} </th>
+          <td mat-cell *matCellDef="let row"> {{row.lastName}} </td>
+        </ng-container>
+
+        <!-- Room Column -->
+        <ng-container matColumnDef="Room">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            {{ 'AdminDashboardPage.UsersTable.RoomCol' | translate }} </th>
+          <td mat-cell *matCellDef="let row"> {{row.room}} </td>
+        </ng-container>
+
+        <!-- Actions Column -->
+        <ng-container matColumnDef="Actions">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let row">
+            <button mat-stroked-button [matMenuTriggerFor]="actionsMenu">
+              {{ 'AdminDashboardPage.UsersTable.ActionsCol' | translate }}</button>
+            <mat-menu #actionsMenu="matMenu" xPosition="before">
+              <button class="action-btn" *ngIf="!laundryStatus" mat-button (click)="startLaundry(row.email)">
+                <mat-icon>local_laundry_service</mat-icon>
+                {{ 'AdminDashboardPage.UsersTable.StartLaundryAction' | translate }}
+              </button>
+              <button class="action-btn" *ngIf="row.role !== 3" mat-button
+                (click)="openTavernScheduler(row.email, row.firstName, row.lastName)">
+                <mat-icon>food_bank</mat-icon>
+                {{ 'AdminDashboardPage.UsersTable.TavernSchedulerAction' | translate }}
+              </button>
+              <button class="action-btn" *ngIf="row.warnings < 3" mat-button (click)="warnUserForBlacklist(row)">
+                <mat-icon>warning</mat-icon>
+                {{ 'AdminDashboardPage.UsersTable.WarnUserAction' | translate }}
+              </button>
+              <button class="action-btn" mat-button (click)="editUser(row.email, editUserDialog)">
+                <mat-icon>edit</mat-icon>
+                {{ 'AdminDashboardPage.UsersTable.EditAction' | translate }}
+              </button>
+              <button class="action-btn" mat-button (click)="deleteUser(row.email, confirmUserDeletingDialog)">
+                <mat-icon>delete</mat-icon>
+                {{ 'AdminDashboardPage.UsersTable.DeleteAction' | translate }}
+              </button>
+            </mat-menu>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="userTableDisplayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: userTableDisplayedColumns;">
+        </tr>
+      </table>
+
+      <mat-paginator id="users-table-paginator" [pageSizeOptions]="[5]"></mat-paginator>
+    </div>
+  </div>
+</div>
+
+<!-- Dialogs -->
+<ng-template #confirmUserDeletingDialog>
+  <div id="confirmUserDeletingDialog">
+    <h1 mat-dialog-title>{{ 'AdminDashboardPage.UserDeleteDialog.Title' | translate }}</h1>
+    <div mat-dialog-content>
+      <p>{{ 'AdminDashboardPage.UserDeleteDialog.Content' | translate }}</p>
+    </div>
+    <div mat-dialog-actions>
+      <div class="actions">
+        <button mat-button
+          [mat-dialog-close]="">{{ 'AdminDashboardPage.UserDeleteDialog.CancelAction' | translate }}</button>
+        <button mat-raised-button color="primary" [mat-dialog-close]="'Ok'" cdkFocusInitial>OK</button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #editUserDialog>
+  <div id="editUserDialog">
+    <form [formGroup]="editUserForm">
+      <h1 mat-dialog-title>{{ 'AdminDashboardPage.EditUserDialog.Title' | translate }}</h1>
+      <div mat-dialog-content>
+        <mat-form-field>
+          <input type="password" matInput
+            placeholder="{{'AdminDashboardPage.EditUserDialog.PasswordPlaceholder' | translate}}"
+            formControlName="NewPassword" required>
+          <mat-error *ngIf="editUserForm.get('NewPassword').hasError('required')">
+            {{'AdminDashboardPage.EditUserDialog.PasswordErrorRequired' | translate}}</mat-error>
+        </mat-form-field>
+      </div>
+      <div mat-dialog-actions>
+        <div class="actions">
+          <button mat-button
+            [mat-dialog-close]="">{{ 'AdminDashboardPage.EditUserDialog.CancelAction' | translate }}</button>
+          <button mat-raised-button color="primary" [mat-dialog-close]="editUserForm.value"
+            [disabled]="!editUserForm.valid">OK</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #payDialog let-data>
+  <div id="payDialog">
+    <h1 mat-dialog-title>{{ 'AdminDashboardPage.PayDialog.Title' | translate }}</h1>
+    <div mat-dialog-content>
+      <p>{{data.model.user.firstName}} {{data.model.user.lastName}}</p>
+      <p>{{ 'AdminDashboardPage.PayDialog.Room' | translate }} - {{data.model.user.room}}</p>
+      <p>{{ 'AdminDashboardPage.PayDialog.LaundryTime' | translate }} -
+        {{data.laundryHours}}{{ 'Common.Hours' | translate }}.
+        {{ 'Common.And' | translate }}
+        {{data.laundryMinutes}}{{ 'Common.Minutes' | translate }}.</p>
+      <p>{{ 'AdminDashboardPage.PayDialog.ToPay' | translate }} - <b>{{data.model.totalToPay}}
+          {{ 'Common.CurrencyLv' | translate }}.</b></p>
+    </div>
+    <div mat-dialog-actions>
+      <div class="actions">
+        <button mat-button [mat-dialog-close]="">{{ 'AdminDashboardPage.PayDialog.DelayAction' | translate }}</button>
+        <button mat-raised-button color="primary" [mat-dialog-close]="data.model.id"
+          cdkFocusInitial>{{ 'AdminDashboardPage.PayDialog.PayAction' | translate }}</button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #addUserDialog>
+  <div id="addUserDialog">
+    <form [formGroup]="addUserForm">
+      <h1 mat-dialog-title>{{ 'AdminDashboardPage.AddUserDialog.Title' | translate }}</h1>
+      <div mat-dialog-content>
+        <mat-form-field>
+          <input matInput placeholder="{{'AdminDashboardPage.AddUserDialog.EmailPlaceholder' | translate}}"
+            formControlName="email" required>
+          <mat-error *ngIf="addUserForm.get('email').hasError('required')">
+            {{'AdminDashboardPage.AddUserDialog.EmailErrorRequired' | translate}}</mat-error>
+          <mat-error *ngIf="addUserForm.get('email').hasError('email')">
+            {{'AdminDashboardPage.AddUserDialog.EmailErrorType' | translate}}
+          </mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="{{'AdminDashboardPage.AddUserDialog.FirstNamePlaceholder' | translate}}"
+            formControlName="firstName" required>
+          <mat-error *ngIf="addUserForm.get('firstName').hasError('required')">
+            {{'AdminDashboardPage.AddUserDialog.FirstNameErrorRequired' | translate}}</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="{{'AdminDashboardPage.AddUserDialog.LastNamePlaceholder' | translate}}"
+            formControlName="lastName" required>
+          <mat-error *ngIf="addUserForm.get('lastName').hasError('required')">
+            {{'AdminDashboardPage.AddUserDialog.LastNameErrorRequired' | translate}}</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="{{'AdminDashboardPage.AddUserDialog.RoomPlaceholder' | translate}}"
+            formControlName="room" required>
+          <mat-error *ngIf="addUserForm.get('room').hasError('required')">
+            {{'AdminDashboardPage.AddUserDialog.RoomErrorRequired' | translate}}</mat-error>
+          <mat-error *ngIf="addUserForm.get('room').hasError('pattern')">
+            {{'AdminDashboardPage.AddUserDialog.RoomErrorPattern' | translate}}</mat-error>
+        </mat-form-field>
+      </div>
+      <div mat-dialog-actions>
+        <div class="actions">
+          <button mat-button
+            [mat-dialog-close]="">{{ 'AdminDashboardPage.AddUserDialog.CancelAction' | translate }}</button>
+          <button mat-raised-button color="primary" [mat-dialog-close]="addUserForm.value"
+            [disabled]="!addUserForm.valid">OK</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>

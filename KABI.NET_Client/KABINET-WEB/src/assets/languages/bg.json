@@ -1,0 +1,157 @@
+{
+  "Common": {
+    "Hours": "ч",
+    "Year": "г",
+    "Minutes": "м",
+    "Seconds": "с",
+    "And": "и",
+    "CurrencyLv": "лв",
+    "Yes": "Да",
+    "No": "Не"
+  },
+  "Navbar": {
+    "MatListMenuItems": {
+      "LaundryStatus": "Статус пералня",
+      "TavernAppointmentStatus": "Статус механа",
+      "LaundryReport": "Отчет пералня",
+      "TavernAppointmentReport": "Отчет механа",
+      "AdminDashboard": "Табло",
+      "Settings": {
+        "Title": "Настройки",
+        "ChangePassword": "Смяна на парола"
+      },
+      "LogOut": "Изход"
+    },
+    "SnackbarSendFullReportSuccessfulMsg": "Отчетът е изпратен на Управителя успешно.",
+    "SnackbarSendFullReportErrorMsg": "Отчетът НЕ МОЖЕ да се изпрати в момента!"
+  },
+  "Footer": {
+    "Content": "Всички права запазени"
+  },
+  "MatTablePaginator": {
+    "Of": "от",
+    "FirstPageLabel": "Първа страница",
+    "LastPageLabel": "Последна страница",
+    "ItemsPerPageLabel": "Резултати",
+    "NextPageLabel": "Следваща страница",
+    "PreviousPageLabel": "Предишна страница"
+  },
+  "AdminDashboardPage": {
+    "LaundryTitle": "Пералнята се използва",
+    "UsersTitle": "Потребители",
+    "AddUserBtn": "Добави",
+    "FilterUsersTablePlaceholder": "Филтър",
+    "StopLaundryAction": "СТОП",
+    "AddUserDialog": {
+      "Title": "Добавяне на потребител",
+      "EmailPlaceholder": "Имейл",
+      "EmailErrorRequired": "Трябва да въведете имейл!",
+      "EmailErrorType": "Невалиден имейл!",
+      "FirstNamePlaceholder": "Име",
+      "FirstNameErrorRequired": "Трябва да въведете име!",
+      "LastNamePlaceholder": "Фамилия",
+      "LastNameErrorRequired": "Трябва да въведете фамилия!",
+      "RoomPlaceholder": "Стая",
+      "RoomErrorRequired": "Трябва да въведете стая!",
+      "RoomErrorPattern": "Невалиден номер на стая!",
+      "CancelAction": "Отказ"
+    },
+    "EditUserDialog": {
+      "Title": "Промяна на потребител",
+      "PasswordPlaceholder": "Нова парола",
+      "PasswordErrorRequired": "Трябва да въведете нова парола!",
+      "CancelAction": "Отказ"
+    },
+    "UserDeleteDialog": {
+      "Title": "Изтриване на потребител",
+      "Content": "Сигурни ли сте, че искате да изтриете потребителя?",
+      "CancelAction": "Отказ"
+    },
+    "PayDialog": {
+      "Title": "Плащане на пране",
+      "Room": "Стая",
+      "LaundryTime": "Времетраене",
+      "ToPay": "Дължи",
+      "DelayAction": "Отложи",
+      "PayAction": "Плати"
+    },
+    "UsersTable": {
+      "FirstNameCol": "Име",
+      "LastNameCol": "Фамилия",
+      "RoomCol": "Стая",
+      "ActionsCol": "Операции",
+      "StartLaundryAction": "Пране",
+      "TavernSchedulerAction": "Механа",
+      "WarnUserAction": "Предупреждение",
+      "Block": "Блокиране",
+      "EditAction": "Промени",
+      "DeleteAction": "Изтрий"
+    },
+    "SnackbarPayLaundrySuccessfulMsg": "Успешно заплащане на прането.",
+    "SnackbarPayLaundryErrorMsg": "Плащането НЕ МОЖА да се осъществи!",
+    "SnackbarPayLaundryInfoMsg": "Потребителят трябва да плати на управителят!",
+    "SnackbarEditSuccessfulMsg": "Потребителят беше променен успешно.",
+    "SnackbarEditErrorMsg": "Потребителят НЕ може да се промени!",
+    "SnackbarAddSuccessfulMsg": "Потребителят беше добавен успешно.",
+    "SnackbarAddErrorMsg": "Потребителят НЕ може да се добави!",
+    "SnackbarDeleteSuccessfulMsg": "Потребителят беше изтрит успешно.",
+    "SnackbarDeleteErrorMsg": "Потребителят НЕ може да се изтрие!",
+    "WarnUserForBlackListSuccessfulMsg": "Потребителят е предупреден успешно. Оставащи предупреждения: {{warnings}}.",
+    "WarnUserForBlackListSuccessfulMsg2": "Потребителят беше блокиран успешно.",
+    "WarnUserForBlackListErrorMsg": "Предупреждението/Блокирането НЕ може да се осъществи!"
+  },
+  "LoginPage": {
+    "Title": "Вход",
+    "EmailPlaceholder": "Имейл",
+    "EmailErrorRequired": "Трябва да въведете имейл!",
+    "EmailErrorType": "Невалиден имейл!",
+    "PasswordPlaceholder": "Парола",
+    "PasswordErrorRequired": "Трябва да въведете парола!",
+    "LoginBtn": "Вход",
+    "ForgotPasswordBtn": "Забравили сте паролата си?",
+    "SnackbarSuccessfulMsg": "Успешно влизане!",
+    "SnackbarErrorMsg": "Грешен имейл или парола! Опитайте пак...",
+    "ForgotPasswordDialog": {
+      "Title": "Забравена парола",
+      "Content": "За смяна на парола, моля потърсете Управителя!"
+    }
+  },
+  "LaundryPage": {
+    "LaundryFree": "Пералнята e свободна",
+    "LaundryBusy": "Пералнята се използва"
+  },
+  "TavernPage": {
+    "Title": "Предстоящи събития",
+    "CreatedBy": "Организатор"
+  },
+  "AccessDeniedPage": {
+    "Header": "ЗАБРАНЕН ДОСТЪП",
+    "Content": "Опитвате се да достъпите страница до която нямате права!",
+    "Action": "Назад"
+  },
+  "ChangePasswordPage": {
+    "Title": "Промени паролата",
+    "CurrentPassPlaceholder": "Въведете настоящата си парола",
+    "CurrentPassErrorRequired": "Моля въведете настоящата си парола!",
+    "NewPassPlaceholder": "Въведете новата си парола",
+    "NewPassErrorRequired": "Моля въведете парола!",
+    "ConfirmPassPlaceholder": "Потвърдете новата си парола",
+    "PasswordsErrorMustMatch": "Паролата не съвпада!",
+    "ChangeBtn": "Промени",
+    "SnackbarSuccessfulMsg": "Успешно променихте вашата парола!",
+    "SnackbarErrorMsg": "Неправилна сегашна парола! Опитайте пак..."
+  },
+  "TavernSchedulerPage": {
+    "CreateAppointmentButton": "Създай събитие",
+    "Title": "Предстоящи събития",
+    "CreatedBy": "Организатор",
+    "EnterAppointmentTitleDialog": {
+      "Title": "Задаване име на събитието",
+      "TitlePlaceholder": "Име на събитието",
+      "TitleErrorRequired": "Името е задължително",
+      "CancelAction": "Отказ"
+    },
+    "SnackbarAddAppointmentSuccessfulMsg": "Събитието беше създадено успешно.",
+    "SnackbarAddAppointmentErrorMsg": "Събитието НЕ може да се създаде!"
+  }
+}

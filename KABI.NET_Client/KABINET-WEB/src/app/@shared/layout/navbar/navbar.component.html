@@ -1,0 +1,46 @@
+<mat-toolbar id="topbar">
+  <button *ngIf="authService.isLoggedIn()" class="sidebar-btn" type="button" mat-button (click)="drawer.toggle()">
+    <i class="fas fa-bars"></i>
+  </button>
+  <h5>Kabi.Net</h5>
+  <div class="lang-flags">
+    <img src="../../../../assets/country-flags/bg-flag.png" (click)="changeLang('bg')" alt="bg-flag">
+    <img src="../../../../assets/country-flags/uk-flag.png" (click)="changeLang('en')" alt="uk-flag">
+  </div>
+</mat-toolbar>
+<mat-drawer-container id="content">
+  <mat-drawer #drawer id="sidenav" mode="over">
+    <mat-nav-list>
+      <a *ngIf="authService.isLoggedIn() && authService.isAdmin()" mat-list-item routerLink='/admin-dashboard'
+        (click)="drawer.close()">
+        {{'Navbar.MatListMenuItems.AdminDashboard' | translate}}
+      </a>
+      <a *ngIf="authService.isLoggedIn() && !authService.isAdmin()" mat-list-item routerLink='/laundry'
+        (click)="drawer.close()">
+        {{'Navbar.MatListMenuItems.LaundryStatus' | translate}}
+      </a>
+      <a *ngIf="authService.isLoggedIn() && !authService.isAdmin()" mat-list-item routerLink='/tavern'
+        (click)="drawer.close()">
+        {{'Navbar.MatListMenuItems.TavernAppointmentStatus' | translate}}
+      </a>
+      <a *ngIf="authService.isLoggedIn() && authService.isAdmin()" mat-list-item
+        (click)="sendLaundryReport(); drawer.close()">
+        {{'Navbar.MatListMenuItems.LaundryReport' | translate}}
+      </a>
+      <a *ngIf="authService.isLoggedIn() && authService.isAdmin()" mat-list-item
+        (click)="sendTavernAppointmentReport(); drawer.close()">
+        {{'Navbar.MatListMenuItems.TavernAppointmentReport' | translate}}
+      </a>
+      <a mat-list-item [matMenuTriggerFor]="settingsMenu">{{'Navbar.MatListMenuItems.Settings.Title' | translate}}</a>
+      <mat-menu #settingsMenu="matMenu">
+        <button mat-menu-item routerLink='/change-password' (click)="drawer.close()">
+          {{'Navbar.MatListMenuItems.Settings.ChangePassword' | translate}} </button>
+      </mat-menu>
+      <a mat-list-item (click)='logout(); drawer.close();'> {{'Navbar.MatListMenuItems.LogOut' | translate}}
+      </a>
+    </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

@@ -1,0 +1,40 @@
+%laundry-icon {
+  display: block;
+  margin: 0 auto;
+  width: 170px;
+}
+
+.container {
+  text-align: center;
+
+  #laundry-busy {
+
+    #laundry-timer-info {
+      position: relative;
+      top: -20px;
+      word-spacing: 28px;
+      left: 1px;
+    }
+
+    #laundry-timer {
+      font-size: 2em;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+
+    #laundry-busy-icon {
+      @extend %laundry-icon;
+    }
+  }
+
+  #laundry-free {
+
+    .title {
+      margin-top: 50px;
+    }
+
+    #laundry-free-icon {
+      @extend %laundry-icon;
+    }
+  }
+}

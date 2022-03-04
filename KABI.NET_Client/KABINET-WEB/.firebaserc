@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "pu-kabinet": {
+      "hosting": {
+        "KABINET-WEB": [
+          "pu-kabinet"
+        ]
+      }
+    }
+  }
+}
